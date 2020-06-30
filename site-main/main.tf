@@ -40,7 +40,7 @@ data "template_file" "bucket_policy" {
 resource "aws_s3_bucket" "website_bucket" {
   bucket = var.bucket_name
   policy = data.template_file.bucket_policy.rendered
-
+  force_destroy = true
   website {
     index_document = "index.html"
     error_document = "404.html"
